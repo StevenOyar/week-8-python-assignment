@@ -79,6 +79,5 @@ Feel free to fork this repository and submit pull requests for improvements.
 This project is for educational purposes. Please respect the CORD-19 dataset license terms.
 
 ## Acknowledgments
-- **Allen Institute for AI** for providing the CORD-19 dataset
 - **Kaggle** for hosting the dataset
 - **Streamlit** for the excellent web app framework
