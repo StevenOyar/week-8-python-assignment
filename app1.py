@@ -15,7 +15,7 @@ st.write("Simple exploration of COVID-19 research papers")
 st.markdown("---")
 st.write("This app analyzes the CORD-19 dataset to explore COVID-19 research trends.")
 
-# Your handle_missing function (exactly as you wrote it)
+# Your handle_missing function 
 def handle_missing(df: pd.DataFrame) -> pd.DataFrame:
     """
     Handles NaN values in metadata_df with column-specific replacements.
@@ -49,7 +49,7 @@ def handle_missing(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
-# Load and process data (your exact code)
+# Load and process data
 @st.cache_data
 def load_and_process_data():
     """Load and process the data using your original code"""
@@ -79,7 +79,7 @@ st.sidebar.header("Settings")
 year_range = st.sidebar.slider("Select year range", 2019, 2022, (2020, 2021))
 top_n_journals = st.sidebar.selectbox("Top N journals to show", [5, 10, 15, 20], index=1)
 
-# Section 1: Basic Data Info
+# Section 1: Basic Data
 st.header("📊 Dataset Overview")
 col1, col2, col3 = st.columns(3)
 
@@ -103,10 +103,10 @@ if st.checkbox("Show missing data information"):
     missing_data = metadata_df.isnull().sum()
     st.dataframe(missing_data[missing_data > 0])
 
-# Section 2: Publications Over Time (your exact analysis)
+# Section 2: Publications Over Time from  ipynb
 st.header("📈 Publications Over Time")
 
-# Count papers by publication year (your code)
+# Count papers by publication year 
 publication_year_counts = metadata_df['publish_time'].dt.year.value_counts().sort_index()
 
 # Filter by year range
@@ -115,7 +115,7 @@ filtered_counts = publication_year_counts[
     (publication_year_counts.index <= year_range[1])
 ]
 
-# Plot (your visualization code)
+# Plot 
 fig, ax = plt.subplots(figsize=(12, 6))
 ax.plot(filtered_counts.index, filtered_counts.values, marker='o')
 ax.set_title("Number of COVID-19 Publications Over Time")
@@ -132,13 +132,13 @@ year_data = pd.DataFrame({
 })
 st.dataframe(year_data)
 
-# Section 3: Top Journals (your exact analysis)
+# Section 3: Top Journals
 st.header("📰 Top Journals")
 
-# Identify top journals (your code)
+# Identify top journals
 top_journals = metadata_df['journal'].value_counts().head(top_n_journals)
 
-# Create bar chart (your visualization)
+# Create bar chart
 fig, ax = plt.subplots(figsize=(12, 6))
 top_journals.plot(kind='bar', ax=ax)
 ax.set_title(f"Top {top_n_journals} Journals Publishing COVID-19 Research")
@@ -156,7 +156,7 @@ journal_data = pd.DataFrame({
 })
 st.dataframe(journal_data)
 
-# Section 4: Word Analysis (your exact code)
+# Section 4: Word Analysis 
 st.header("🔤 Most Frequent Words in Titles")
 
 # Find most frequent words (your analysis)
@@ -184,7 +184,7 @@ st.pyplot(fig)
 # Section 5: Word Cloud (your exact code)
 st.header("☁️ Word Cloud")
 
-# Generate word cloud (your visualization)
+# Generate word cloud 
 try:
     wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(dict(word_counts))
     
@@ -196,14 +196,14 @@ try:
 except Exception as e:
     st.error(f"Could not generate word cloud: {e}")
 
-# Section 6: Source Distribution (your exact code)
+# Section 6: Source Distribution 
 st.header("📊 Papers by Source")
 
 if 'source_x' in metadata_df.columns:
-    # Count papers by source (your code)
+    # Count papers by source 
     source_counts = metadata_df["source_x"].value_counts()
     
-    # Plot (your visualization)
+    # Plot 
     fig, ax = plt.subplots(figsize=(10, 6))
     source_counts.plot(kind="bar", color="blue", edgecolor="black", ax=ax)
     ax.set_title("Distribution of Paper Count by Source")
@@ -223,7 +223,7 @@ if 'source_x' in metadata_df.columns:
 else:
     st.write("Source column not found in the dataset")
 
-# Section 7: Sample Data
+# Section 7: Sample Data 
 st.header("📋 Sample Data")
 sample_size = st.slider("Number of rows to display", 5, 50, 10)
 
