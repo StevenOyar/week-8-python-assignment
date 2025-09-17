@@ -159,7 +159,7 @@ st.dataframe(journal_data)
 # Section 4: Word Analysis 
 st.header("🔤 Most Frequent Words in Titles")
 
-# Find most frequent words (your analysis)
+# Find most frequent
 all_titles = ' '.join(metadata_df['title'].tolist()).lower()
 words = re.findall(r'\b\w+\b', all_titles)
 word_counts = Counter(words)
@@ -181,7 +181,7 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 st.pyplot(fig)
 
-# Section 5: Word Cloud (your exact code)
+# Section 5: Word Cloud
 st.header("☁️ Word Cloud")
 
 # Generate word cloud 
